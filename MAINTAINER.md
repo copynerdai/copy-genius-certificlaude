@@ -5,7 +5,7 @@ Questo file spiega come è fatto il pacchetto e come spedire un aggiornamento ag
 ## Struttura della repo
 
 ```
-copy-genius/                              (repo GitHub: copynerdai/copy-genius)
+copy-genius/                              (repo GitHub: copynerdai/copy-genius-certificlaude)
 ├── .claude-plugin/
 │   └── marketplace.json                  ← elenca il plugin (marketplace name: "copynerd")
 ├── README.md                             ← istruzioni di installazione per gli studenti
@@ -75,7 +75,7 @@ Poi `/copy-genius` in una cartella di test. Per simulare un update: alza `VERSIO
 
 ## Naming (per riferimento)
 
-- Repo GitHub: `copynerdai/copy-genius`
+- Repo GitHub: `copynerdai/copy-genius-certificlaude`
 - Marketplace name: `copynerd`
 - Plugin name: `copy-genius`
-- Comando studente: `/plugin marketplace add copynerdai/copy-genius` → `/plugin install copy-genius@copynerd`
+- Comando studente: `/plugin marketplace add copynerdai/copy-genius-certificlaude` → `/plugin install copy-genius@copynerd`

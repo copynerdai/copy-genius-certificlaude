@@ -13,7 +13,7 @@ Ti servono solo **Claude Code** installato ([download](https://www.anthropic.com
 Apri Claude Code e digita questi **due comandi**, uno alla volta:
 
 ```
-/plugin marketplace add copynerdai/copy-genius
+/plugin marketplace add copynerdai/copy-genius-certificlaude
 ```
 
 ```
@@ -76,5 +76,5 @@ Il tuo lavoro. In dettaglio, queste cartelle/file dentro `~/Desktop/copy-genius/
 ## Problemi?
 
 - **`/copy-genius` non compare** dopo l'install → hai riavviato Claude Code? Chiudi e riapri.
-- **Errore sul marketplace** → ricontrolla di aver scritto esattamente `copynerdai/copy-genius`.
+- **Errore sul marketplace** → ricontrolla di aver scritto esattamente `copynerdai/copy-genius-certificlaude`.
 - Altri dubbi → contatta il canale di supporto del corso.

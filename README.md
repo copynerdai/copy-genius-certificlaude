@@ -77,4 +77,18 @@ Il tuo lavoro. In dettaglio, queste cartelle/file dentro `~/Desktop/copy-genius/
 
 - **`/copy-genius` non compare** dopo l'install → hai riavviato Claude Code? Chiudi e riapri.
 - **Errore sul marketplace** → ricontrolla di aver scritto esattamente `copynerdai/copy-genius-certificlaude`.
+- **Al primo `/copy-genius` chiede il permesso di scrivere sul Desktop** → è normale (installa il vault in `~/Desktop/copy-genius/`). Dai **Allow / Sì**.
 - Altri dubbi → contatta il canale di supporto del corso.
+
+### Windows — piano B (solo se l'auto-installazione non parte)
+
+Se su Windows il primo `/copy-genius` non riesce a creare la cartella da solo, puoi installare il vault a mano in 1 minuto, da Esplora File:
+
+1. Vai su **https://github.com/copynerdai/copy-genius-certificlaude** → pulsante verde **Code** → **Download ZIP**.
+2. Estrai lo ZIP (tasto destro → Estrai tutto).
+3. Dentro la cartella estratta apri: `plugins\copy-genius\framework\`
+4. Seleziona **tutto il contenuto** di quella cartella `framework` (Ctrl+A) e **copialo** (Ctrl+C).
+5. Sul **Desktop** crea una cartella chiamata esattamente `copy-genius`, entraci e **incolla** (Ctrl+V).
+6. Torna in Claude Code e digita `/copy-genius` → trova il vault già pronto e parte.
+
+Path finale corretto: `C:\Users\<tuo-utente>\Desktop\copy-genius\` con dentro un file `CLAUDE.md`.

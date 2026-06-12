@@ -37,7 +37,9 @@ Il comando (`commands/copy-genius.md`) sa distinguere due cose sul computer dell
 I dati protetti (definiti nel comando, sezione "Protected user-data"):
 `brands/` (tranne `_template/`), `swipe/`, `strategy-notebook.md`, `raw/`, `core/feedback-rules.md`, `core/writing/banned-phrases-user.md`.
 
-⚠️ **Regola d'oro quando modifichi il framework**: non mettere MAI dati che lo studente accumula dentro un file di framework (che si sovrascrive). Se aggiungi un nuovo tipo di "file che lo studente fa crescere", aggiungilo anche alla lista dei protetti dentro `commands/copy-genius.md` E alla tabella esclusioni del rsync di update. Altrimenti un aggiornamento glielo cancella.
+⚠️ **Regola d'oro quando modifichi il framework**: non mettere MAI dati che lo studente accumula dentro un file di framework (che si sovrascrive). Se aggiungi un nuovo tipo di "file che lo studente fa crescere", aggiungilo alla lista USER-DATA dentro `commands/copy-genius.md` (e NON alle funzioni di copia del framework). Altrimenti un aggiornamento glielo cancella.
+
+⚠️ **Come funziona la copia (whitelist, cross-platform)**: il comando `commands/copy-genius.md` non usa `rsync` (non esiste su Windows). Copia **esplicitamente** solo le cartelle-framework elencate nelle funzioni `copy_framework` (blocco POSIX per Mac/Linux/Git-Bash) e `Copy-Framework` (blocco PowerShell per Windows). Conseguenza operativa: **se aggiungi una NUOVA cartella di framework** (es. un nuovo tipo di specialista in una cartella nuova), devi aggiungerla a ENTRAMBE quelle funzioni, sennò non arriva agli studenti. Aggiungere un file dentro una cartella già elencata (es. un nuovo `format-specialists/x.md`) invece arriva da solo. Nota: una cartella-framework rinominata/cancellata lascia il vecchio file nel vault dello studente (la copia non cancella) — raro, ma tienilo presente.
 
 ## Come spedire un aggiornamento (la procedura)
 

@@ -1,0 +1,9 @@
+{
+  "name": "copy-genius",
+  "description": "Copy Genius — assistente di copywriting direct-response. Orchestratore + specialisti per ricerca di mercato, funnel brief e scrittura di ads, advertorial, landing, VSL, email, upsell e libri. Si installa da solo in ~/Desktop/copy-genius e si aggiorna conservando i tuoi brand.",
+  "version": "1.0.0",
+  "author": {
+    "name": "copynerdai"
+  },
+  "homepage": "https://github.com/copynerdai/copy-genius"
+}

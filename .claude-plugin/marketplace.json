@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "copynerd",
+  "description": "Marketplace di copynerdai — distribuisce Copy Genius e i suoi aggiornamenti.",
+  "owner": {
+    "name": "copynerdai"
+  },
+  "plugins": [
+    {
+      "name": "copy-genius",
+      "description": "Copy Genius — assistente di copywriting direct-response. Si installa da solo in ~/Desktop/copy-genius e si aggiorna conservando brand, swipe, note e feedback.",
+      "author": {
+        "name": "copynerdai"
+      },
+      "category": "productivity",
+      "source": "./plugins/copy-genius",
+      "homepage": "https://github.com/copynerdai/copy-genius"
+    }
+  ]
+}

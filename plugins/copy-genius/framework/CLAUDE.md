@@ -56,6 +56,8 @@ The Copy Genius vault is organized around **four top-level pillars** plus **thre
 - **`/swipe/`** — the user's swipe library. One entry per proven piece (CARD + segmented SKELETON), compiled element libraries (hooks, headlines, bullets, CTAs — short-format, read in full before writing), full texts next to each entry in `swipe/<formato>/full-text/` (original language; structure crosses languages, phrasing never), and [swipe-index](swipe/index.md) as the retrieval surface. Populated via the `swipe-ingestion` skill; consumed at the Structure selection step of Mode 1 and by section specialists.
 - **`/strategy-notebook.md`** — the user's strategy notebook. Raw observations from courses, podcasts, conversations, books, that Copy Genius distills into reusable insights using the wiki's existing strategic framework knowledge.
 
+**Operational data area** (root): **`/monitoraggio/`** — the competitive-ads **archive** (per-user data) written by the `ad-scraping` skill. One folder per observed brand (`config.json` + `ledger.json` + one card per **creative** in `ads/` + weekly `report/`), plus `tracksheet-concorrenza.base` (cross-brand live table, Obsidian Bases). Client brands subscribe to observed brands via `brands/<brand>/competitors/watchlist.md`.
+
 The flow: Copy Genius routes user intent → Skills decide and orchestrate → Format Specialists draw from Knowledge (Strategic Frameworks + Writing) + Section Specialists + Brand instance data → finished materials.
 
 ### Operating model — single orchestrator
@@ -100,7 +102,13 @@ copy-genius/
 │   ├── deep-research.md
 │   ├── brand-creation.md
 │   ├── document-formatter.md
-│   └── wiki-health-check.md
+│   ├── swipe-ingestion.md
+│   ├── wiki-health-check.md
+│   ├── ad-scraping.md                     ← competitive-ads monitoring (orchestrator)
+│   └── ad-scraping/                       ← its tools + data model + setup
+│       ├── modello-dati.md
+│       ├── setup.md
+│       └── tools/                         ← scrape-ads · transcribe-deep · run-all · transcribe.py
 ├── format-specialists/                    ← FORMAT SPECIALISTS — produce complete pieces
 │   ├── email-specialist.md
 │   ├── ad-specialist.md
@@ -140,6 +148,9 @@ copy-genius/
         │   └── <procedure>.md
         └── transcripts/
             └── <transcript>.md
+└── monitoraggio/                          ← ADS MONITORING ARCHIVE (user data, written by ad-scraping)
+    ├── tracksheet-concorrenza.base        ← cross-brand live table (Obsidian Bases)
+    └── <observed-brand>/                  ← config.json + ledger.json + ads/ (one card per creative) + report/
 ```
 
 ### How Copy Genius uses the map
@@ -154,6 +165,7 @@ copy-genius/
 - **`raw/`** — read on user request ("what's in /raw/?", "process the latest item in /raw/"). The orchestrator does not scan this folder automatically. Files stay here until the user routes them.
 - **`swipe/`** — [swipe-index](swipe/index.md) is read at the Structure selection step of Mode 1 (shortlist by awareness/format/length → CARDs → 1-3 SKELETONs); the element libraries (`swipe/elements/`) are read IN FULL by the matching section specialists before writing; entries are added only via the `swipe-ingestion` skill (copywriter approves every entry).
 - **`strategy-notebook.md`** — read when the user wants to distill an observation, add an entry, or browse past distillations. The orchestrator does the distillation work directly, drawing from `core/` to cross-reference each entry.
+- **`monitoraggio/`** — read on demand for competitive questions ("what ads is X running?", "recurring angles among the winners of Y"). Path: the client brand's `competitors/watchlist.md` (which observed brands it follows) → the observed brand's `ledger.json` (angle/format/longevity/variants of every creative) → cards in `ads/` only when depth is needed. Weekly runs (the `ad-scraping` skill) write here; **consultation is direct orchestrator work — never re-scrape to answer a question the archive already answers**.
 - **`index.md`** — the human-facing wiki map. The orchestrator does NOT read this file at session start; CLAUDE.md is the operational source. Point the user to `index.md` when they ask "where do I start?", "what's in this wiki?", "show me the map", "give me an overview" — it's the navigation page designed for humans browsing in Obsidian.
 
 ---
@@ -169,7 +181,7 @@ The capabilities available in the Copy Genius system. Copy Genius routes intents
 | **deep-research**      | Active | [deep-research](skills/deep-research.md)           | Runs market/audience/competitor research; produces Unified Research Brief; can populate brand wiki                                                                                                                                                                                                           |
 | **strategist**         | Active | [strategist](skills/strategist.md)                 | Phase 1 — Discovery workflow; orchestrates strategic framework files; produces funnel brief                                                                                                                                                                                                                  |
 | **brand-creation**     | Active | [brand-creation](skills/brand-creation.md)         | Guided new-brand setup (interview + scraping brand's OWN materials)                                                                                                                                                                                                                                          |
-| **brand-monitor**      | Placeholder | `skills/brand-monitor.md` — planned, not yet created           | Weekly competitive monitoring; produces strategic report. **Not yet built** — route requests per §11 "Skill not yet built"                                                                                                                                                                                                                                                     |
+| **ad-scraping**        | Active | [ad-scraping](skills/ad-scraping.md)               | Weekly competitive-ads monitoring on the Meta Ad Library (no login). Deterministic scripts in `skills/ad-scraping/tools/` do census + clustering + transcription; the orchestrator writes the cards and the report. Activated by `/ad-scraping` or the phrases in §5. Writes the per-user archive `monitoraggio/`. First run installs Node/Playwright per `skills/ad-scraping/setup.md`. Archive **consultation** = direct orchestrator work (see §5) |
 | **wiki-health-check**  | Active | [wiki-health-check](skills/wiki-health-check.md)   | On-demand diagnostic scan of the wiki (broken links, orphan files, registry inconsistencies, brand file completeness, drift candidates, banned phrases). Read-only; never modifies files; never asks the user questions during execution                                                                     |
 | **swipe-ingestion** | Active | [swipe-ingestion](skills/swipe-ingestion.md) | Analyzes a proven piece and turns it into a swipe entry: CARD + segmented SKELETON (canonical section taxonomy) + element extraction (verbatim + TEMPLATE line, emotion-as-used) + index row. Copywriter approves every entry before save. |
 | **document-formatter** | Active | [document-formatter](skills/document-formatter.md) | Applies Copy Genius's output formatting standard (Helvetica Neue 12pt, 3-level reading for landing pages, 2-level for emails, yellow highlight on clickable elements only) to any produced copy. Outputs paste-ready Markdown + Google Doc setup checklist. Brand-level overrides via `brand-copy-rules.md`. |
@@ -273,7 +285,8 @@ Mapping what the copywriter says to the skill that should be invoked. Copy Geniu
 | "save this rule globally", "salva globalmente", "ricorda questo per tutti i brand" | Global rule save | Direct write to [feedback-rules](core/feedback-rules.md) |
 | "save this rule for this brand", "salva per questo brand", "remember this for [brand]" | Brand rule save | Direct write to `brands/<brand>/brand-copy-rules.md` |
 | "what's the state of brand X?", "dove siamo con X?", "qual è lo stato del funnel?" | State query | Direct response from §4 state reading |
-| "monitor the competitors", "monitoraggio competitor", "report competitivo settimanale" | Competitive monitoring | `brand-monitor` — **Placeholder, not yet built**: respond per §11 "Skill not yet built" |
+| "monitora la concorrenza", "attiva il monitoraggio dei brand", "controlla le aziende della concorrenza", "fai il monitoraggio", "monitoraggio per [brand]", "monitor the competitors", "report competitivo settimanale" | Competitive monitoring **run** | `ad-scraping` — read [ad-scraping](skills/ad-scraping.md) and run its pipeline (config → census → transcription → cards → report). Also invocable directly with `/ad-scraping`. For reading the existing archive without a run, use the next row |
+| "che ads stanno girando i competitor?", "quali angoli usa [brand osservato]?", "i winner di [brand osservato]", "apri il monitoraggio", "apri la tracksheet concorrenza" | Ads-archive consultation | Direct orchestrator work on `monitoraggio/`: the client brand's watchlist (`brands/<brand>/competitors/watchlist.md`) → the observed brand's `ledger.json` → cards in `ads/` as needed. No skill invocation, no re-scrape |
 | "explain [concept]", "spiegami [concept]", "cos'è [concept]?" | Strategic framework question | Direct response, citing the relevant strategic framework file |
 | "add to swipe file", "aggiungi al mio swipe file", "ingerisci questo pezzo", "analizza questo pezzo per lo swipe" | Swipe ingestion | `swipe-ingestion` — analysis + entry draft; the copywriter approves before anything is saved |
 | "usa la struttura di [pezzo]", "che strutture abbiamo per [formato/awareness]?", "cerca nello swipe", "componi lead da X e offerta da Y" | Swipe retrieval / structure selection | Direct orchestrator work on [swipe-index](swipe/index.md): shortlist → CARDs → SKELETON(s); composition runs the seam check (swipe-ingestion §7) |
@@ -614,6 +627,8 @@ Wiki Management — cosa fai?
 7. Distillare una nota          — orchestrator → strategy-notebook.md
 8. Processare un file in /raw/  — orchestrator → suggests routing
 9. Controllo integrità wiki     — wiki-health-check
+10. Monitorare la concorrenza   — ad-scraping (censimento + schede + report
+                                  settimanale delle ads dei competitor)
 ```
 
 Option 3 sub-menu (Aggiornare un brand):

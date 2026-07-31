@@ -15,15 +15,19 @@ copy-genius/                              (repo GitHub: copynerdai/copy-genius-c
         ├── .claude-plugin/
         │   └── plugin.json               ← manifest del plugin (name + version)
         ├── commands/
-        │   └── copy-genius.md            ← il comando /copy-genius (logica install + update)
+        │   ├── copy-genius.md            ← il comando /copy-genius (logica install + update)
+        │   └── ad-scraping.md            ← il comando /ad-scraping (punta alla skill nel vault)
         └── framework/                    ← IL SISTEMA che viene spedito e aggiornato
             ├── VERSION                   ← la versione (es. 1.0.0)
             ├── CLAUDE.md
             ├── index.md
             ├── core/  skills/  format-specialists/  section-specialists/
+            │   └── skills/ad-scraping/   ← tool + modello dati + setup della skill di monitoraggio
             ├── brands/_template/         ← solo il template (nessun brand reale)
             └── swipe/                     ← scaffold vuoto
 ```
+
+I comandi in `commands/` sono registrati da Claude Code appena il plugin è installato: `/ad-scraping` funziona senza che lo studente copi niente a mano.
 
 La cartella `framework/` è ciò che finisce sul Desktop dello studente al primo `/copy-genius`. Tutto il resto (manifest, comando, README) serve all'infrastruttura del plugin.
 

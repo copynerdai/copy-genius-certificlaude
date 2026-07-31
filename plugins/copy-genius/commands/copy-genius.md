@@ -24,7 +24,7 @@ Copy Genius is installed by a **whitelist copy**: the install copies ONLY the kn
 `CLAUDE.md`, `index.md`, `VERSION`, `core/conventions.md`, `core/strategic-frameworks/` (all), `core/writing/writing-principles.md`, `core/writing/emotional-intelligence.md`, `skills/` (all), `format-specialists/` (all), `section-specialists/` (all), `brands/_template/` (all).
 
 **USER-DATA paths** (seeded once on first install, then NEVER overwritten):
-`brands/` (every brand folder except `_template/`), `swipe/`, `strategy-notebook.md`, `raw/`, `core/feedback-rules.md`, `core/writing/banned-phrases-user.md`.
+`brands/` (every brand folder except `_template/`), `swipe/`, `strategy-notebook.md`, `raw/`, `core/feedback-rules.md`, `core/writing/banned-phrases-user.md`, `monitoraggio/` (the competitive-ads archive written by `ad-scraping`), `skills/ad-scraping/node_modules/` + `skills/ad-scraping/archive-root.txt` (installed dependencies and local archive override — the framework copy never deletes, so they survive).
 
 Two files inside those paths are framework rules that must reach an already-installed vault: `core/writing/banned-phrases-user.md` and `swipe/full-text-rules.md`. They are seeded when MISSING (never overwritten if present) — see the update block below.
 

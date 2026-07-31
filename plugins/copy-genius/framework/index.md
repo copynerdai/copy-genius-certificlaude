@@ -23,6 +23,7 @@ A direct response copywriting knowledge base, run by a single orchestrator that 
 | I want to drop a swipe or note I found in the wild | Drop it in the `raw/` folder (parking) → then ingest into the swipe library via [swipe-ingestion](skills/swipe-ingestion.md) or distill into [strategy-notebook.md](strategy-notebook.md) |
 | I want to know what skills are available | See "Skills, format specialists, section specialists" below or read the registry in [CLAUDE.md §3](CLAUDE.md) |
 | I want to verify the wiki is structurally clean | Ask the orchestrator: *"wiki health check"* → routes to [wiki-health-check](skills/wiki-health-check.md) |
+| I want to see what ads my competitors are running | Ask the orchestrator: *"monitora la concorrenza"* (or `/ad-scraping`) → routes to [ad-scraping](skills/ad-scraping.md); the archive it builds lives in `monitoraggio/` |
 
 ---
 
@@ -37,6 +38,8 @@ copy-genius/
 ├── SECTION SPECIALISTS → section-specialists/      ← produce specific sections
 │
 ├── BRANDS             → brands/<brand-slug>/       ← per-brand instances
+│
+├── MONITORING         → monitoraggio/              ← competitive-ads archive (written by ad-scraping)
 │
 └── USER WORKSPACES    → raw/, swipe/,             ← personal collection
                          strategy-notebook.md         (cross-brand, user-owned)
@@ -90,7 +93,7 @@ Active operations. Each skill is a workflow file the orchestrator reads and exec
 | [deep-research](skills/deep-research.md) | Active | Market/audience/competitor/psychographic research; produces Unified Research Brief |
 | [strategist](skills/strategist.md) | Active | Phase 1 Discovery; produces the funnel brief |
 | [brand-creation](skills/brand-creation.md) | Active | Guided new-brand setup (interview + scraping the brand's own materials) |
-| `brand-monitor` | Placeholder | Weekly competitive monitoring — planned skill, file not yet created |
+| [ad-scraping](skills/ad-scraping.md) | Active | Weekly competitive-ads monitoring on the Meta Ad Library (no login). Attiva con `/ad-scraping` o "monitora la concorrenza". Scrive l'archivio `monitoraggio/`. Dipendenze al primo uso: [setup](skills/ad-scraping/setup.md) |
 | [wiki-health-check](skills/wiki-health-check.md) | Active | On-demand diagnostic scan (broken links, orphan files, registry consistency, drift, banned phrases). Read-only; never modifies files |
 | [swipe-ingestion](skills/swipe-ingestion.md) | Active | Analyzes a proven piece into a swipe entry (CARD + segmented SKELETON + element extraction + index row); copywriter approves before save |
 | [document-formatter](skills/document-formatter.md) | Active | Applies the output formatting standard to produced copy; outputs paste-ready Markdown + Google Doc setup checklist |

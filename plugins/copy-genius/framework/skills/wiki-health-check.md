@@ -28,7 +28,7 @@ Output: list of broken links with source file, line number, and broken target.
 
 ### 2. Orphan files
 
-Identifies `.md` files in the wiki that are never linked from any other file (excluding the entry points, which are reached directly rather than via links: `CLAUDE.md`, `index.md`, `SETUP.md`, `swipe/index.md`, `swipe/_template-entry.md`, `swipe/full-text-rules.md`, `swipe/elements/*.md`, `core/feedback-rules.md`, `core/writing/banned-phrases-user.md`, `strategy-notebook.md`, `raw/README.md`, `brands/*/funnel-briefs/README.md`, `brands/*/research/README.md`).
+Identifies `.md` files in the wiki that are never linked from any other file (excluding the entry points, which are reached directly rather than via links: `CLAUDE.md`, `index.md`, `SETUP.md`, `swipe/index.md`, `swipe/_template-entry.md`, `swipe/full-text-rules.md`, `swipe/elements/*.md`, `core/feedback-rules.md`, `core/writing/banned-phrases-user.md`, `strategy-notebook.md`, and everything under `monitoraggio/` and `skills/ad-scraping/` (data archive and skill package — not wiki prose), `raw/README.md`, `brands/*/funnel-briefs/README.md`, `brands/*/research/README.md`).
 
 Output: list of orphan files with their location.
 

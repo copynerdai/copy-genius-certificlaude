@@ -42,6 +42,19 @@ Apri Claude Code, digita `/copy-genius`, e il sistema parte. Da quel momento puo
 - scrivere copy (landing, email, ad, VSL, libri) per i tuoi brand
 - fare ricerca di mercato
 - analizzare swipe e distillare note di strategia
+- **monitorare le ads della concorrenza** con `/ad-scraping` (vedi sotto)
+
+### Monitoraggio della concorrenza — `/ad-scraping`
+
+Il comando `/ad-scraping` legge la **Meta Ad Library** (l'archivio pubblico di trasparenza di Meta, senza login e senza account) e ti costruisce un archivio di quello che la concorrenza sta davvero girando: una scheda per creatività, un report settimanale con **cosa stanno testando adesso** e i **winner consolidati** (le ads attive da più di 30 giorni).
+
+Puoi lanciarlo su un brand (`/ad-scraping nomebrand`) o su tutti quelli che hai configurato (`/ad-scraping`). Basta che tu gli dia nome, sito e pagina Facebook del brand da osservare: le pagine le indichi tu, non si indovinano.
+
+**Prima volta**: servono Node e Playwright, e per trascrivere i video anche ffmpeg + Whisper. Claude te li installa seguendo `skills/ad-scraping/setup.md`. La trascrizione è facoltativa: se salti quel pezzo, schede e report funzionano lo stesso.
+
+L'archivio finisce in `~/Desktop/copy-genius/monitoraggio/` ed è roba tua: gli aggiornamenti non lo toccano.
+
+> Da un monitoraggio si prendono **angoli, strutture e formati** — mai le frasi. È lo stesso firewall dello swipe file: la struttura attraversa le lingue, il fraseggio no.
 
 Tutto il tuo lavoro — brand, swipe, note, feedback — vive in `~/Desktop/copy-genius/` **sul tuo computer**. Resta privato e locale: non viene mai caricato da nessuna parte.
 

@@ -99,7 +99,11 @@ Rule of thumb: highlight = "the reader's eye should know exactly where to click"
 
 ### Paragraph rhythm
 
-- Single blank line between paragraphs.
+> ⚠️ **BLANK LINE BETWEEN EVERY PARAGRAPH — ZERO TOLERANCE, ALL BRANDS, ALL FORMATS.** This is the single most-flagged formatting miss. There must be **one empty paragraph (a blank line) between every paragraph** of the deliverable — email, landing page, advertorial, social post, VSL script, upsell, every format, every brand. Rule of thumb the user states as: *"a blank line every time there's a period / between every block of text."* This is **enforced on the FINAL produced document**, not on the source Markdown/HTML (HTML→Google Doc conversion collapses consecutive `<p>` tags — separate them with an empty paragraph). Verify mechanically before delivery (see §7.5 self-check + the blank-line audit). Enforces global [feedback-rules](core/feedback-rules.md) #3.
+>
+> **The only sanctioned exceptions** (must be a documented, functional element — never a default): a platform spacer such as the Facebook 4-dots preview-cutoff block (`.` lines kept consecutive), and a section boundary where the next block is a page-break label. Outside those, two adjacent non-blank paragraphs = a defect to fix.
+
+- **Single blank line between every paragraph** (see callout above — zero tolerance).
 - No first-line indentation.
 - Short paragraphs (1-4 sentences typically).
 
@@ -218,7 +222,7 @@ Ciao {first_name},
 [Closing paragraph.]
 
 A presto,
-Simone
+[Nome del frontman]
 
 **P.S.** [Post-script content — only "P.S." is bold; the rest is regular body text.]
 ```
@@ -306,7 +310,7 @@ E se ti dicessi che il copywriting come lo conosciamo oggi sta per diventare un 
 Per i dettagli del workshop, <mark>clicca qui</mark>.
 
 A presto,
-Simone
+[Nome del frontman]
 
 **P.S.** La classe è limitata. Se decidi all'ultimo, potresti trovare le porte chiuse.
 
@@ -334,6 +338,7 @@ Run this binary checklist on the formatted output before handing it over. Any un
 - [ ] **Underline within the limit** — at most a handful of occurrences per piece; excess downgraded to italic or bold (§3)
 - [ ] **P.S. bold only on the abbreviation** — "P.S." / "PS" / "P.P.S." bold, the rest of the post-script regular body (§3)
 - [ ] **Font and hierarchy conform** — Helvetica Neue 12pt (or brand override per §3) and the correct level architecture for the format per the §6 table (3-level for LP-family, 2-level for email-family)
+- [ ] **Blank line between every paragraph — verified on the FINAL document** — a single empty paragraph separates each paragraph (§3 Paragraph rhythm). Zero-tolerance, all formats. Watch HTML→Google Doc conversion: consecutive `<p>` tags collapse together and must be separated by an empty paragraph (`<p>&nbsp;</p>`). Confirm by opening the produced document, not just the source. Enforces global [feedback-rules](core/feedback-rules.md) #3.
 
 ---
 

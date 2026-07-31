@@ -252,6 +252,8 @@ The story is not decoration. It does specific persuasion work:
 
 For story-led long-form structures, the story is the spine. See §7 for the full compositional pattern.
 
+- [story-telling-specialist](section-specialists/story-telling-specialist.md) — quando scrivi la story section (o una pagina story-led, §7), leggilo per struttura, arco e voce del racconto.
+
 ### 5.4 — Mechanism section
 
 Apply the craft from [marketing-thesis-specialist](section-specialists/marketing-thesis-specialist.md).

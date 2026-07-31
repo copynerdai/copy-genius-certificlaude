@@ -26,6 +26,8 @@ Copy Genius is installed by a **whitelist copy**: the install copies ONLY the kn
 **USER-DATA paths** (seeded once on first install, then NEVER overwritten):
 `brands/` (every brand folder except `_template/`), `swipe/`, `strategy-notebook.md`, `raw/`, `core/feedback-rules.md`, `core/writing/banned-phrases-user.md`.
 
+Two files inside those paths are framework rules that must reach an already-installed vault: `core/writing/banned-phrases-user.md` and `swipe/full-text-rules.md`. They are seeded when MISSING (never overwritten if present) — see the update block below.
+
 ---
 
 ## Phase 1 — Install or update the vault
@@ -67,6 +69,7 @@ else
   # seed any user-data file that is MISSING (older vault) without overwriting existing ones
   [ -f "$VAULT/core/feedback-rules.md" ]            || cp -f "$SRC/core/feedback-rules.md" "$VAULT/core/"
   [ -f "$VAULT/core/writing/banned-phrases-user.md" ] || { mkdir -p "$VAULT/core/writing"; cp -f "$SRC/core/writing/banned-phrases-user.md" "$VAULT/core/writing/"; }
+  [ -f "$VAULT/swipe/full-text-rules.md" ]           || { mkdir -p "$VAULT/swipe"; cp -f "$SRC/swipe/full-text-rules.md" "$VAULT/swipe/"; }
   if [ "$PLUGIN_V" != "$VAULT_V" ]; then
     copy_framework
     echo "COPYGENIUS_RESULT=UPDATED from=${VAULT_V:-unknown} to=${PLUGIN_V}"
@@ -111,6 +114,7 @@ if (-not (Test-Path "$VAULT\CLAUDE.md")) {
   $VAULT_V  = Get-Content "$VAULT\VERSION" -ErrorAction SilentlyContinue
   if (-not (Test-Path "$VAULT\core\feedback-rules.md"))            { Copy-Item -Force "$SRC\core\feedback-rules.md" "$VAULT\core\" }
   if (-not (Test-Path "$VAULT\core\writing\banned-phrases-user.md")) { New-Item -ItemType Directory -Force -Path "$VAULT\core\writing" | Out-Null; Copy-Item -Force "$SRC\core\writing\banned-phrases-user.md" "$VAULT\core\writing\" }
+  if (-not (Test-Path "$VAULT\swipe\full-text-rules.md"))            { New-Item -ItemType Directory -Force -Path "$VAULT\swipe" | Out-Null; Copy-Item -Force "$SRC\swipe\full-text-rules.md" "$VAULT\swipe\" }
   if ($PLUGIN_V -ne $VAULT_V) { Copy-Framework; "COPYGENIUS_RESULT=UPDATED from=$VAULT_V to=$PLUGIN_V" }
   else { "COPYGENIUS_RESULT=UPTODATE version=$VAULT_V" }
 }

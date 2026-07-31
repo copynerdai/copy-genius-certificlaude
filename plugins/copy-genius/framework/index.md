@@ -164,7 +164,7 @@ Personal, cross-brand, user-owned. Not part of the four pillars; they belong to 
 | Location | Purpose |
 |---|---|
 | `raw/` (folder) | Parking area. Drop PDFs, screenshots, URLs, snippets — anything to process later. The orchestrator reads on request and suggests routing. |
-| [swipe/index.md](swipe/index.md) | Personal swipe library. One entry per proven piece (CARD + segmented SKELETON), compiled element libraries (hooks, headlines, bullets, CTAs), full texts in `swipe/full-text/` with a language firewall (structure crosses languages, phrasing never); populated via the [swipe-ingestion](skills/swipe-ingestion.md) skill. |
+| [swipe/index.md](swipe/index.md) | Personal swipe library. Organized by format folders `swipe/<formato>/` (entry + `full-text/`), compiled cross-piece element libraries in `swipe/elements/`, full texts with a language firewall (structure crosses languages, phrasing never); populated via the [swipe-ingestion](skills/swipe-ingestion.md) skill. |
 | [strategy-notebook.md](strategy-notebook.md) | Strategy notebook. Raw observations from courses, podcasts, conversations, books — distilled by the orchestrator using the wiki's existing strategic frameworks. |
 
 ---

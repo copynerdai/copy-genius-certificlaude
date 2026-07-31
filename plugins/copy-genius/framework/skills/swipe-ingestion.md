@@ -4,7 +4,7 @@
 >
 > **Consumer contract**
 > Invoked by: the orchestrator on intent match (see §2). Inputs: a piece (pasted text, file in `/raw/`, or URL) + whatever provenance the copywriter knows.
-> Output: one entry in `swipe/<slug>.md` + full text in `swipe/full-text/<slug>.md` + rows appended to the element libraries + one row in [swipe-index](../swipe/index.md).
+> Output: one entry in `swipe/<formato>/<slug>.md` + full text in `swipe/<formato>/full-text/<slug>.md` + rows appended to the element libraries + one row in [swipe-index](../swipe/index.md).
 > **Copywriter-led: nothing is saved without explicit approval of the draft entry.**
 
 ---
@@ -24,6 +24,8 @@
 ## 2. When invoked
 
 Trigger phrases: "aggiungi questo allo swipe", "ingerisci questo pezzo", "analizza questo pezzo per lo swipe", "add this to the swipe file", "build the swipe entry for X", or any piece dropped in `/raw/` that the copywriter routes to the swipe.
+
+**Batch intake — "ingerisci swipe" / "processa la inbox"**: when the copywriter has parked several pieces at once (typically saved web clips dropped in `/raw/`), run §3-§7 on each piece, then §8, then move each processed source out of the parking area. Files are read directly (HTML → strip tags for full verbatim) — never via the lossy URL fetch.
 
 ## 3. Pre-analysis (mechanical)
 
@@ -62,7 +64,9 @@ Output of this step: the frontmatter fields + the raw material for the CARD ("wh
    - `lang` = curator's language (e.g. IT pieces): short verbatim excerpts allowed where the phrasing itself is the lesson.
 5. Per-segment header carries the searchable tags: type, emotion-as-used, register notes.
 
-## 6. Element extraction (short elements → libraries)
+## 6. Element extraction (entry = canonical, libraries = compiled)
+
+> **Two-place rule (mandatory).** Extracted elements are written FIRST into the entry's `## Elementi estratti` section (the canonical source, so a human reading the piece sees everything harvested from it), THEN appended to the matching `elements/*.md` libraries with `from: <slug>` (the compiled cross-piece read surface). The libraries' "source of truth = the entry" — never extract to the libraries alone. An entry with zero extracted elements is a red flag: re-scan before finalizing — every proven piece has at least its opening line and 1-2 standout bullets/CTAs worth keeping.
 
 For each hook, headline, standout bullet, CTA/P.S. worth keeping:
 
@@ -95,16 +99,32 @@ Flag mismatches to the copywriter; never auto-resolve.
 
 ## 8. Save + compile
 
-1. Write `swipe/<slug>.md` (format: [_template-entry](../swipe/_template-entry.md)).
-2. Write `swipe/full-text/<slug>.md` (original text as-is; 3-line header + link back).
-3. Append extracted elements to the matching `swipe/elements/*.md` libraries; bump their `entries` count.
-4. Add the row to [swipe-index](../swipe/index.md) Pieces table; bump `pieces` count and library counts.
-5. Confirm to the copywriter: slug + what was extracted where.
+1. Write `swipe/<formato>/<slug>.md` — the entry, INCLUDING its `## Elementi estratti` section (canonical, per §6) (format: [_template-entry](../swipe/_template-entry.md)). `<formato>` = the captured channel folder (landing-page / vsl / email / ads / advertorial / upsell / blog / book); create it if missing. Extra formats the piece serves → `also-formats:` frontmatter + index `format` column.
+2. Write `swipe/<formato>/full-text/<slug>.md` (original text as-is; 3-line header + link back). Create the `full-text/` subfolder if missing.
+3. Compile the entry's elements into the matching `swipe/elements/*.md` libraries (flat, cross-piece): append each `◦` with `from: <slug>`; bump their `entries` count. The entry is the source — never write to a library an element the entry doesn't carry.
+4. Add the row to [swipe-index](../swipe/index.md) Pieces table (slug link = `<formato>/<slug>.md`); bump `pieces` count and library counts.
+5. Keep the original source file (`.html` for web clips, `.pdf` for PDF/scan sources) wherever you archive heavy originals, under the same `<formato>/<slug>` map — so the renderable page stays openable next to its entry. Optional: skip if you only keep the extracted text.
+6. Confirm to the copywriter: slug + what was extracted where.
+
+### 8b. Naming invariant — ONE slug, identical everywhere (mandatory)
+
+The slug chosen in §3 is the single canonical identifier and **must be byte-for-byte identical everywhere it appears**, so the original piece is always retrievable by name:
+
+1. **Entry + full-text**: `swipe/<formato>/<slug>.md` and `swipe/<formato>/full-text/<slug>.md`.
+2. **Element library references**: every `from: <slug>` line.
+3. **Index row**: the slug in the [swipe-index](../swipe/index.md) Pieces table.
+4. **Archived original** (if you keep one): named `<slug>.<ext>` — never the messy original download name (`EugeneScwhartzad87.pdf`).
+
+Rules:
+- **One entry per piece, 1:1.** Never leave a stored original under its raw filename; rename it to `<slug>.<ext>` when you file it.
+- **Alternate scans / variant captures** of an already-ingested piece (different publisher/scan, no separate entry) do not get their own entry — keep them beside the original, clearly marked as variants.
+- **When a slug is renamed or an entry is merged/dropped**, update every place from the list above in the same pass — the slug never drifts between them.
+- **Verification** (after a batch or on demand): diff the `<formato>/*.md` slugs against the index rows and the `from:` references in the element libraries — the sets must agree, with no duplicates. Fix any divergence immediately.
 
 ## 9. Cross-references
 
 - [swipe-index](../swipe/index.md) — the retrieval surface this skill feeds
 - [_template-entry](../swipe/_template-entry.md) — canonical entry format
-- `swipe/full-text/README.md` — language firewall rules
+- [full-text-rules](../swipe/full-text-rules.md) — language firewall rules
 - CLAUDE.md §10 Mode 1 — the Structure selection step that consumes the index
 - [writing-principles](../core/writing/writing-principles.md) — Fase 4 calque scan (cross-language enforcement)

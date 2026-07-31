@@ -53,7 +53,7 @@ The Copy Genius vault is organized around **four top-level pillars** plus **thre
 **User-level workspaces** (root, global, cross-brand):
 
 - **`/raw/`** — parking area for files the user wants to process later (PDFs, screenshots, URLs, copy snippets). No structure required. Copy Genius reads on request and suggests routing.
-- **`/swipe/`** — the user's swipe library. One entry per proven piece (CARD + segmented SKELETON), compiled element libraries (hooks, headlines, bullets, CTAs — short-format, read in full before writing), full texts in `swipe/full-text/` (original language; structure crosses languages, phrasing never), and [swipe-index](swipe/index.md) as the retrieval surface. Populated via the `swipe-ingestion` skill; consumed at the Structure selection step of Mode 1 and by section specialists.
+- **`/swipe/`** — the user's swipe library. One entry per proven piece (CARD + segmented SKELETON), compiled element libraries (hooks, headlines, bullets, CTAs — short-format, read in full before writing), full texts next to each entry in `swipe/<formato>/full-text/` (original language; structure crosses languages, phrasing never), and [swipe-index](swipe/index.md) as the retrieval surface. Populated via the `swipe-ingestion` skill; consumed at the Structure selection step of Mode 1 and by section specialists.
 - **`/strategy-notebook.md`** — the user's strategy notebook. Raw observations from courses, podcasts, conversations, books, that Copy Genius distills into reusable insights using the wiki's existing strategic framework knowledge.
 
 The flow: Copy Genius routes user intent → Skills decide and orchestrate → Format Specialists draw from Knowledge (Strategic Frameworks + Writing) + Section Specialists + Brand instance data → finished materials.
@@ -70,9 +70,11 @@ copy-genius/
 ├── swipe/                                 ← USER SWIPE LIBRARY
 │   ├── index.md                           ← retrieval surface (pieces table + element libraries)
 │   ├── _template-entry.md                 ← canonical entry format
-│   ├── <slug>.md                          ← one entry per piece (CARD + SKELETON)
-│   ├── elements/                          ← compiled libraries: hooks, headlines, bullets, ctas-and-ps
-│   └── full-text/                         ← original pieces, original language (language firewall)
+│   ├── full-text-rules.md                 ← language firewall rules for the full texts
+│   ├── elements/                          ← compiled cross-piece libraries: hooks, headlines, bullets, ctas-and-ps
+│   └── <formato>/                         ← one folder per format (landing-page, vsl, email, ads, advertorial, upsell, blog, book)
+│       ├── <slug>.md                      ← entry per piece (CARD + SKELETON)
+│       └── full-text/<slug>.md            ← original full text, next to its entry (language firewall)
 ├── strategy-notebook.md                   ← USER STRATEGY NOTEBOOK
 ├── core/                                  ← KNOWLEDGE
 │   ├── strategic-frameworks/              ← Strategic Frameworks — the WHAT/WHY
@@ -116,7 +118,8 @@ copy-genius/
 │   ├── faq-specialist.md
 │   ├── headline-specialist.md
 │   ├── hook-specialist.md
-│   └── bullet-point-specialist.md
+│   ├── bullet-point-specialist.md
+│   └── story-telling-specialist.md
 └── brands/                                ← BRANDS — instances
     └── <brand-slug>/                      ← one folder per brand
         ├── brand.md
@@ -196,6 +199,7 @@ The capabilities available in the Copy Genius system. Copy Genius routes intents
 | **offer-specialist**            | Active | [offer-specialist](section-specialists/offer-specialist.md)                       | Complete offer block — Chiusura Divina (Inferno → Purgatorio → Paradiso), product reveal, price reveal + destruction/anchoring, bonus stack (5 types), guarantee (6-point system), urgency/scarcity, CTA, 3 P.S. system                                                                                              |
 | **faq-specialist**              | Active | [faq-specialist](section-specialists/faq-specialist.md)                           | FAQ block — Objection Exercise (14-question baseline), buyer-voice question generation, 7 answer patterns by objection type (trust / fit / risk / price / time / social / procedural), canonical sequencing, soft re-point to CTA                                                                                    |
 | **bullet-point-specialist**     | Active | [bullet-point-specialist](section-specialists/bullet-point-specialist.md)         | Bullet points (formerly "fascinations") — curiosity bullets, tease bullets, page-reference bullets, mystery bullets                                                                                                                                                                                                  |
+| **story-telling-specialist**   | Active | [story-telling-specialist](section-specialists/story-telling-specialist.md)       | Story sections — stories, parables, anecdotes, origin narratives, hero-character arcs for any narrative-led piece. 5 story pillars + archetype/Hero's-Journey selection + scrematura/differentiation jobs. Consumed by format specialists building narrative and by lead/hook/marketing-thesis specialists when the section is narrative-led |
 
 ### Update protocol for this registry
 
@@ -263,6 +267,7 @@ Mapping what the copywriter says to the skill that should be invoked. Copy Geniu
 | "write the hook", "scrivi l'hook", "I need an opener for X" | Hook writing | `hook-specialist` |
 | "write the headline", "scrivi l'headline", "draft the H1" | Headline writing | `headline-specialist` |
 | "write bullets", "scrivi i bullet", "I need curiosity bullets", "scrivi le fascination" | Bullet point writing | `bullet-point-specialist` |
+| "scrivi la storia", "write the story", "I need an origin story", "scrivi l'aneddoto", "racconta la storia del brand", "narrative hook/lead" | Story / narrative writing | `story-telling-specialist` — consumed by the format specialist when the piece is narrative-led; invoke directly for standalone story sections |
 | "write the upsell", "scrivi l'OTO", "draft the upsell page" | Upsell writing | `upsell-specialist` |
 | "scrivi un libro", "write a book", "draft the lead-magnet book", "build the authority book", "scrivi il manuale", "fammi la scaletta del libro", "scrivi il capitolo N" | Book writing | `book-specialist` |
 | "save this rule globally", "salva globalmente", "ricorda questo per tutti i brand" | Global rule save | Direct write to [feedback-rules](core/feedback-rules.md) |
@@ -538,7 +543,7 @@ When the copywriter says "save this rule" or equivalent, Copy Genius manages the
 3. **Formulate the rule** with: category + the rule + a 1-line WHY + an example (when useful)
 4. **Show for approval**: *"I'll save this rule: [text]. Confirm?"*
 5. **On confirmation**: append to the appropriate file ([feedback-rules](core/feedback-rules.md) for global; `brands/<brand>/brand-copy-rules.md` for brand-specific) and update its index
-6. **Phrase/pattern bans get double registration**: if the rule bans a specific phrase or construction, ALSO append a row to your protected [banned-phrases-user](core/writing/banned-phrases-user.md) file — the QA scan (Fase 4c) reads it mechanically alongside the framework "Banned AI-tell phrases" table in [writing-principles](core/writing/writing-principles.md). feedback-rules keeps the full rationale and example; the user banned-phrases file keeps the mechanical match. Both are protected user data and survive framework updates. **NEVER** write a personal ban into the writing-principles table itself — that file is framework and is overwritten on update; personal bans go in `banned-phrases-user.md`.
+6. **Phrase/pattern bans get double registration**: if the rule bans a specific phrase or construction, ALSO append a row to your protected [banned-phrases-user](core/writing/banned-phrases-user.md) file — the QA scan (Fase 4c) reads it mechanically alongside the framework table in [writing-principles](core/writing/writing-principles.md). Never write personal bans into writing-principles itself: that file is framework and gets overwritten on update. feedback-rules keeps the full rationale and example.
 
 ### What NOT to save
 

@@ -492,7 +492,7 @@ The universal behavior pattern applies to every step:
 
 **Methodology to apply**: [funnel-architecture](core/strategic-frameworks/funnel-architecture.md)
 
-**Brief block to produce**: §4.1 Funnel map summary + §4.2 Per-touchpoint specifications + §4.3 Satellite sub-funnels + §4.4 Branching/segmentation
+**Brief block to produce**: §4.1 Funnel map + page registry + §4.2 Per-surface specifications + §4.3 Satellite sub-funnels + §4.4 Branching/segmentation
 
 **Pre-reads**:
 - Step 9 output (chain → rings to distribute)
@@ -506,7 +506,7 @@ The universal behavior pattern applies to every step:
 - The first question is always: *"Describe the funnel. What are the exact steps a prospect goes through, from first touchpoint to post-purchase?"*
 - Map the funnel; distribute rings; design per-touchpoint transitions; architect satellite sub-funnels (with their own mini-chains); document branching/segmentation
 - Run the 4 verification audits (Orphan rings / Dead-weight / Emotional discontinuity / Friction) and document results
-- Each touchpoint block in §4.2 is the **self-contained brief** for the specialist who will write it later
+- Each per-surface block in §4.2 is the **self-contained brief** for the specialist who will write it later
 - **For each touchpoint (and each satellite), compile the `Piece-level persuasion architecture` block per `funnel-brief.md` §4.2 / §4.3.** This codifies the techniques that operate on the WHOLE piece — NOT on single rings (those belong to Step 9). Three sub-decisions per touchpoint:
   1. **Camouflage frame** — pick ONE of: None | News/scoop | Scientific discovery | Rediscovered/suppressed knowledge | Conspiracy/hidden-interest | Personal story/memoir. Defaults per awareness level: see the table below. Always cross-check against brand voice — a frame that clashes with the brand's native register breaks trust faster than no frame at all.
   2. **Dominant continuous techniques** — decide On/Off for Intensification and Identification across the body. Defaults per awareness level: see the table below. These run as atmosphere through the body, distinct from the per-ring spikes assigned in Step 9.

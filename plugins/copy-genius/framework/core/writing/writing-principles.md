@@ -144,7 +144,7 @@ The consolidated pre-delivery checklist. Every box maps to a step defined above;
 - [ ] 1. **Fase 3 — structure pass**: the 2-3 underserved Section A principles identified and refined
 - [ ] 2. **Fase 4a — Tier 1 banned structures ×3 at count 0**: em/en-dash (B.1), rigid parallel triads (B.2), negation-affirmation (B.3)
 - [ ] 3. **Fase 4b — Tier 2 calibrated scan**: every passage that "sounds AI" diagnosed against the 5 Tier 2 patterns
-- [ ] 4. **Fase 4c — Banned AI-tell phrases scan**: zero matches against the framework table AND `banned-phrases-user.md`
+- [ ] 4. **Fase 4c — Banned AI-tell phrases table scan**: zero matches
 - [ ] 5. **Fase 4d — feedback-rules scan**: global + brand rules, every ❌ pattern verified absent
 - [ ] 6. **Fase 4e — cross-language calque scan**: anglicisms, syntax carryover, translated idioms, inherited "Not X. But Y." all absent (only when cross-language sources were consulted)
 - [ ] 7. **Gulpease on target for the format**: §3.4 default ≥70, or the format's deroga per §3.5 (e.g., advertorial editorial-style 63-70)
@@ -239,7 +239,7 @@ These techniques map directly to the index — applying them raises the score, o
    - The grade-school rule "every sentence needs a main verb" doesn't apply here
    - Short fragments often read more naturally and raise the index
    - "Bastano poche frasi. Brevi. Senza fronzoli." is valid copy
-   - Exception: feedback-rules may restrict this further — global rule #2 (no frasi-graniglia in serie) caps isolated fragments at deliberate, occasional emphasis; the conversational articulated period is the default
+   - Exception: your own feedback-rules may restrict this further — a rule capping "frasi-graniglia in serie" keeps isolated fragments to deliberate, occasional emphasis and makes the conversational articulated period the default
 
 5. **Short paragraphs (max 5-6 lines)**
    - Visual readability + index gain. Long paragraphs feel intimidating and slow down processing
@@ -731,13 +731,17 @@ This table complements the Tier 1 zero-tolerance patterns (B.1, B.2, B.3 above).
 | Phrase / variant | Why banned |
 |---|---|
 | "cambia tutto" / "c'è un dettaglio che cambia tutto" / "questo cambia tutto" / "ed è questo che cambia tutto" | Hollow reveal-promise cliché. The phrase IS the AI-tell, regardless of what comes after. Whatever follows almost never delivers a real "tutto" worth signaling, and even when it does, this phrasing weakens it. There's always a more specific way to say what the phrase was trying to say (e.g., "perché si organizza così:" / "ed è qui che la matematica diventa interessante" / "il punto è il modo in cui si organizza") |
+| "mi spiego" / "mi spiego meglio" / "mi spiego un attimo" / "lasciami spiegare" | Throat-clearing filler — a vocal tic that works in speech but reads as a wasted line in copy. Rewrite cue: go straight into the unpacking, or use a bridge that carries voice and content ("Ti faccio un esempio.", "Funziona così:", "Te lo dimostro.") |
+| "Punto." / "Punto e basta." / "E punto." come chiusura enfatica isolata (es. "…non ha alternative. Punto.") | Effect-closer da finto-deciso, legge AI e leggermente manipolatorio. Aggiunge enfasi, non informazione. Rewrite cue: lascia reggere la frase dalla sua sostanza, oppure estendila con contenuto concreto. |
+| "Ora ascoltami bene, perché qui c'è la cosa più importante di tutte" / "perché qui c'è la cosa più importante" / "quello che sto per dirti è la cosa più importante" / "ora arriva la parte più importante" + aperture-schiarimento "voglio parlarti di una cosa" / "lascia che ti dica una cosa" | Annuncio d'importanza gonfiato / throat-clearing: promette un climax invece di consegnarlo, legge AI e indebolisce ciò che segue. Il marker breve "Ascoltami bene" da solo resta lecito; bandita è la coda che annuncia importanza. Rewrite cue: consegna il punto diretto, oppure usa un ponte che porti contenuto. |
+| Parola-eco isolata dal punto per ribadire: "…a metà. Sempre." / "…non si scorda più. Mai." / "Sempre." / "Mai." / "Falso." come rilancio a sé stante | Echo-word intensifier: una parola sola isolata col punto che ripete solo l'enfasi della frase precedente. Finto-ritmo, legge AI, non aggiunge informazione. Generalizza la regola su "Punto." qui sopra. Una chiusura secca di più parole che porta contenuto resta lecita. Rewrite cue: piega l'avverbio/aggettivo dentro la frase ("…a metà, sempre.") o taglia l'eco. |
 | Em-dash and en-dash usage (the character `—` and `–`) | See §B.1 for the full treatment. Cross-referenced here for the Fase 4 scan: this table and the B.1 check both fire on any dash occurrence. |
 | Rigid parallel triads | See §B.2 for the full treatment. Cross-referenced here for the Fase 4 scan. |
 | Negation-affirmation ("Non X. È Y." and variants listed in B.3) | See §B.3 for the full treatment. Cross-referenced here for the Fase 4 scan. |
 
 **Application**: during Fase 4 of the protocol (Anti-AI pass), scan the polished draft for any phrase in this table. If present, rewrite without it. Full stop. Don't soften, don't paraphrase the same construction, don't keep the rhetorical move "but with different words". Drop the move entirely and find a concrete bridge that names what's actually coming.
 
-**Extending this list**: the table above is the **framework** baseline (shipped with Copy Genius, refreshed on update). When the copywriter flags a NEW phrase as "AI-tell, banned outright", do NOT append it here — that would be lost on the next framework update. Instead append it to the protected [banned-phrases-user](banned-phrases-user.md) file (and register the full rationale in [feedback-rules](../feedback-rules.md) per CLAUDE.md §9). The Fase 4c scan reads both surfaces. Never bury an outright ban inside a Tier 2 diagnostic pattern; outright bans are stricter and deserve their own visibility.
+**Extending this list**: the table above is the **framework** baseline (shipped with Copy Genius, refreshed on update). When the copywriter flags a NEW phrase as "AI-tell, banned outright", do NOT append it here — that would be lost on the next framework update. Instead append it to the protected [banned-phrases-user](banned-phrases-user.md) file (and register the full rationale in [feedback-rules](../feedback-rules.md) per CLAUDE.md §9). Never bury an outright ban inside a Tier 2 diagnostic pattern; outright bans are stricter and deserve their own visibility.
 
 ---
 

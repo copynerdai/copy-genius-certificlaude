@@ -479,6 +479,8 @@ Each type is an **end-to-end narrative shape** for ONE email. The 5-block anatom
 
 ### Family D — Story & Narrative (carry the message through narrative arc)
 
+- [story-telling-specialist](section-specialists/story-telling-specialist.md) — le email di questa famiglia (founder/origin story, archetypal journey) sono narrative: leggilo per struttura, arco e voce del racconto.
+
 ---
 
 #### Type 7 — Archetypal Journey

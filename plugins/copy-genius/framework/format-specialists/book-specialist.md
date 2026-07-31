@@ -1032,6 +1032,8 @@ Voice drift is the #1 enemy of long books. Countermeasures:
 
 ### 24.3 Stories and case studies
 
+- [story-telling-specialist](section-specialists/story-telling-specialist.md) — per i book narrativi (brand autobiography, origin story, hero arc) leggilo per struttura, arco e voce del racconto.
+
 Stories are the heart of a book that converts. Rules:
 
 - **Always work from real facts**: never invent case studies. Take the data from the raw materials and narrativize it.

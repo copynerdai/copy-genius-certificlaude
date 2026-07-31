@@ -58,6 +58,25 @@ elements_extracted: <N hooks, N headlines, ...>   # what was sent to the element
 ### [CLOSE] — <CTA pattern, P.S. system>
 10. ...
 
+## Elementi estratti
+
+> **Fonte canonica degli elementi di questo pezzo.** Da qui si compilano le librerie
+> `elements/*.md` (cross-pezzo): ogni `◦` qui sotto va anche appeso alla libreria che lo
+> possiede, con `from: <slug>`. Estrazione selettiva 1-5 per tipo (swipe-ingestion §6):
+> solo ciò che merita di essere studiato in bulk. Verbatim in lingua originale; il
+> TEMPLATE (componenti bracketate, lingua del curatore) è emotion-agnostic. Ometti le
+> sezioni vuote.
+
+**Hooks** → [hooks](../elements/hooks.md)
+```
+◦ "<verbatim>"
+  TEMPLATE: [componente] + [componente]
+  <hook-type> · usage: <...> · emotion-as-used: <X> · awareness: <Y> · lang: <Z>
+```
+
+**Headlines** → [headlines](../elements/headlines.md) · **Bullets** → [bullets](../elements/bullets.md) · **CTA/P.S.** → [ctas-and-ps](../elements/ctas-and-ps.md)
+*(stesso formato; ometti i tipi senza elementi)*
+
 ## NOTES (optional, 3 lines max)
 
 > Anything load-bearing that doesn't fit a beat: pacing quirks, what you'd

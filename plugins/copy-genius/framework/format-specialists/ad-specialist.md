@@ -573,6 +573,8 @@ The body is a story — the founder's discovery, a customer's transformation, an
 
 *Example* (Sam Ovens, paraphrased): *"Today a journalist asked me: 'do we always have to change ourselves to meet our aspirations? Don't we lose our identity chasing success?' Here is what I told him…"* — then a long meditation that bridges into the offer.
 
+- [story-telling-specialist](section-specialists/story-telling-specialist.md) — quando il body dell'ad e' una storia (founder discovery, customer transformation), leggilo per struttura, arco e voce del racconto.
+
 **3. Conversation**
 The body is a one-sided dialogue with the reader, simulating a real conversation. Often uses interrogative beats followed by "I bet I'm right, here is why…". Strong empathy creator. Works across awareness levels but particularly for Problem Aware audiences who recognize themselves in the dialogue.
 

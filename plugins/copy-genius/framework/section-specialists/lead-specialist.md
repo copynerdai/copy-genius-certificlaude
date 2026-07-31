@@ -381,6 +381,8 @@ The prediction is dated (January 12), specific (35,000%), backed by named author
 
 **Definition.** Opens in the middle of a scene — a moment in someone's life. The reader is dropped into the story without setup, without claim, without product mention. The most indirect of all lead types and the most powerful when executed well.
 
+- [story-telling-specialist](section-specialists/story-telling-specialist.md) — lo Story Lead e' narrativo per definizione: leggilo per struttura, arco e voce del racconto.
+
 **What it does argumentatively.** Lowers all sales-resistance defenses. A story is not an advertisement; the reader engages out of the universal pull of narrative. Identification with the protagonist installs Ring B1 (brand understands me) almost automatically, and identification with the journey installs the relevant problem and solution rings as the story unfolds.
 
 **Conditions of fit.**

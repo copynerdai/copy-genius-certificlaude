@@ -28,7 +28,7 @@ Output: list of broken links with source file, line number, and broken target.
 
 ### 2. Orphan files
 
-Identifies `.md` files in the wiki that are never linked from any other file (excluding the entry points, which are reached directly rather than via links: `CLAUDE.md`, `index.md`, `SETUP.md`, `swipe/index.md`, `swipe/_template-entry.md`, `swipe/full-text/README.md`, `swipe/elements/*.md`, `swipe-file.md` (redirect stub), `strategy-notebook.md`, `raw/README.md`, `brands/*/funnel-briefs/README.md`, `brands/*/research/README.md`).
+Identifies `.md` files in the wiki that are never linked from any other file (excluding the entry points, which are reached directly rather than via links: `CLAUDE.md`, `index.md`, `SETUP.md`, `swipe/index.md`, `swipe/_template-entry.md`, `swipe/full-text-rules.md`, `swipe/elements/*.md`, `core/feedback-rules.md`, `core/writing/banned-phrases-user.md`, `strategy-notebook.md`, `raw/README.md`, `brands/*/funnel-briefs/README.md`, `brands/*/research/README.md`).
 
 Output: list of orphan files with their location.
 
@@ -99,7 +99,7 @@ Output: list of stale markers and removed-file mentions, with file and line.
 Verifies the swipe library's machine-readable counts and provenance pointers:
 
 1. **Count consistency** — the `pieces:` frontmatter count of `swipe/index.md` matches the actual rows in its Pieces table; the `entries:` frontmatter count of each `swipe/elements/*.md` library matches the actual element rows in the file (and the per-library counts shown in the index's Element libraries table)
-2. **Provenance resolution** — every `from: <slug>` in the element libraries resolves to an existing entry `swipe/<slug>.md`; every index row's slug resolves to an entry file (and, where present, to `swipe/full-text/<slug>.md`)
+2. **Provenance resolution** — every `from: <slug>` in the element libraries resolves to an existing entry `swipe/<formato>/<slug>.md`; every index row's slug resolves to an entry file (and, where present, to `swipe/<formato>/full-text/<slug>.md`)
 
 Output: list of count mismatches and dangling `from:` / slug references, with file and line.
 

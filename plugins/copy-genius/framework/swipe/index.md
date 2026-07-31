@@ -10,7 +10,7 @@ pieces: 0
 > Read by: the orchestrator and format specialists at the **Structure selection** step of Mode 1 (CLAUDE.md §10), and by section specialists hunting cross-format segments.
 > This index is the ONLY file you scan in full. From here: shortlist 3-5 slugs → read their CARD (top of each entry) → read the SKELETON of the 1-3 finalists. Never bulk-read entries.
 > Element libraries (hooks, headlines, bullets, CTAs) are the exception: they are short-format and designed to be read IN FULL before writing — see [elements](elements/hooks.md).
-> Full texts live in `swipe/full-text/` — consult on demand for structural study; **structure crosses languages, phrasing never** (see the README there).
+> Full texts live in `swipe/<formato>/full-text/` (next to each entry) — consult on demand for structural study; **structure crosses languages, phrasing never** (see [full-text-rules](full-text-rules.md)).
 
 ## How a chosen skeleton is adapted (after the copywriter picks)
 
@@ -26,6 +26,19 @@ A beat survives as a FUNCTION, not as its original instrument: "borrowed authori
 - By structure: filter the Pieces table on `awareness` + `format` + `length`.
 - By element: go straight to the element libraries (emotion tags are **as-used, swappable** — never filter them out on emotion alone).
 - By segment: the `segments` column lists which canonical sections each skeleton contains ([HOOK] [HEADLINE] [LEAD] [THESIS] [PROOF] [BULLETS] [OFFER] [FAQ] [CLOSE]). Composition across pieces is allowed — run the seam check (swipe-ingestion §7) when mixing sources.
+
+## Organizzazione per formato (folders) — convenzione
+
+**Tutto è diviso per formato**, così niente resta sparpagliato:
+
+- `swipe/<formato>/<slug>.md` — la **scheda** (CARD/SKELETON/elementi)
+- `swipe/<formato>/full-text/<slug>.md` — il **testo completo**, accanto alla scheda
+
+Cartelle (= domini degli specialist): `landing-page/` (LP, sales page, opt-in, sales letter long-form) · `vsl/` · `email/` · `ads/` · `advertorial/` · `upsell/` · `blog/` · `book/`. Le cartelle nascono quando ingerisci il primo pezzo di quel formato — non serve crearle in anticipo.
+
+Restano fuori dalle cartelle-formato solo: questo `index.md`, `_template-entry.md`, `full-text-rules.md` (file di sistema) e `elements/` (librerie **cross-pezzo**: aggregano hook/headline/bullet/CTA di TUTTI i formati, si leggono per intero — non sono materiali di un singolo pezzo).
+
+**Regola multi-formato — il formato è un'etichetta, non una prigione:** un pezzo esiste fisicamente UNA volta, nella cartella del canale catturato; gli altri formati che serve vanno in `also-formats:` (frontmatter) e nella colonna `format` qui (es. `sales-letter · vsl`). Il retrieval gira su questa tabella, quindi un pezzo taggato `vsl` salta fuori anche se il file fisico sta in `landing-page/`.
 
 ## Pieces
 
@@ -48,4 +61,4 @@ A beat survives as a FUNCTION, not as its original instrument: "borrowed authori
 
 - [swipe-ingestion](../skills/swipe-ingestion.md) — how pieces get analyzed and added
 - [_template-entry](_template-entry.md) — the canonical entry format
-- `full-text/` — original pieces, original language (see its README for the language rules)
+- [full-text-rules](full-text-rules.md) — language firewall rules (full texts live in `<formato>/full-text/<slug>.md`)

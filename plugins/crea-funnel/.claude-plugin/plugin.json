@@ -1,7 +1,7 @@
 {
   "name": "crea-funnel",
   "description": "Trasforma un copy già scritto in pagine web impaginate, con immagini, collegamenti e controlli, fino alla pubblicazione su Cloudflare o al codice per un editor.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "copynerdai"
   },

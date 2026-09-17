@@ -18,7 +18,7 @@
     },
     {
       "name": "crea-funnel",
-      "description": "Dal copy già scritto alle pagine web: stile, immagini, controlli e consegna su Cloudflare o come codice per un editor.",
+      "description": "Versione marketplace precedente. Per il comando breve /crea-funnel usa l'installazione personale descritta nella guida del repository.",
       "author": {
         "name": "copynerdai"
       },

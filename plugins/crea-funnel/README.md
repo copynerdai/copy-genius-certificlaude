@@ -1,29 +1,22 @@
 # Crea funnel
 
-Plugin del marketplace `copynerd`. Accompagna un copywriter dal copy già scritto alle pagine web pubblicate su Cloudflare o al codice da incollare in un editor come Elementor.
+Skill di Copynerd per Claude Code, da avviare con **`/crea-funnel`**. Accompagna un copywriter dal copy già scritto alle pagine web pubblicate su Cloudflare o al codice da incollare in un editor come Elementor.
 
 ## Installazione
 
-In Claude Code, se il marketplace non è già presente:
+Incolla questa richiesta in Claude Code:
 
-```
-/plugin marketplace add copynerdai/copy-genius-certificlaude
-```
-
-Poi:
-
-```
-/plugin marketplace update copynerd
-/plugin install crea-funnel@copynerd
-```
+> Installa o aggiorna la skill personale Crea funnel seguendo https://raw.githubusercontent.com/copynerdai/copy-genius-certificlaude/main/INSTALLA-CREA-FUNNEL.md. Voglio avviarla con /crea-funnel. Conserva eventuali copie precedenti e non modificare i materiali di Copy Genius.
 
 Riavvia Claude Code e avvia:
 
 ```
-/crea-funnel:crea-funnel
+/crea-funnel
 ```
 
-Per aggiornare una copia già installata, usa `/plugin marketplace update copynerd` e `/plugin update crea-funnel@copynerd`, poi riavvia Claude Code.
+Per gli aggiornamenti usa lo stesso messaggio, non `/plugin update`. Installazione e aggiornamento non richiedono account GitHub, Git o chiavi API. Gli strumenti richiedono Node.js 22 o successiva.
+
+La [guida all'installazione](../../INSTALLA-CREA-FUNNEL.md) spiega anche il passaggio dalla precedente versione marketplace e il recupero delle copie precedenti. La skill viene copiata integralmente nelle skill personali di Claude Code, senza il manifest del plugin: per questo il comando non ha prefissi o due punti. La funzione resta la stessa, disponibile nei progetti locali di quel computer.
 
 ## Documentazione
 
@@ -39,4 +32,6 @@ Il codice per editor è HTML da incollare, non una raccolta di blocchi nativi mo
 
 ## Manutenzione
 
-La skill distribuibile vive in `skills/crea-funnel/`. Dopo una modifica, esegui i test e valida il plugin e il marketplace con `claude plugin validate`. Incrementa `version` in `.claude-plugin/plugin.json` a ogni rilascio, altrimenti le copie già installate possono restare nella cache. Non duplicare la versione nella voce del marketplace.
+La sola copia distribuibile vive in `skills/crea-funnel/`. Il percorso storico `plugins/crea-funnel/` e il plugin rimangono per compatibilità con chi ha installato la versione precedente, ma le nuove installazioni del corso usano `installa.mjs`. Non copiare `.claude-plugin/` nelle skill personali: reintrodurrebbe il comando con prefisso.
+
+Dopo una modifica, esegui `node --test plugins/crea-funnel/test/installazione.test.mjs` dalla radice del repository, i test della skill e `claude plugin validate` per skill, plugin e marketplace. Incrementa `version` in `.claude-plugin/plugin.json` per aggiornare anche le copie legacy; non duplicarla nel marketplace. L'installer diretto identifica la versione tramite il commit GitHub e verifica i file del commit, senza dipendere dalla cache del marketplace.

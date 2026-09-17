@@ -27,35 +27,25 @@ La prima preparazione dell'ambiente scarica circa 1 GB (il browser usato per i c
 
 ## Installazione
 
-La skill si installa come **plugin**, un pacchetto che si aggiunge a Claude Code, dal **marketplace** `copynerd`, l'elenco di plugin da cui si installa anche Copy Genius.
+La skill si installa direttamente dal [repository GitHub di Copynerd](https://github.com/copynerdai/copy-genius-certificlaude), come **skill personale**: disponibile nei tuoi progetti di Claude Code su quel computer. Non serve il marketplace, né un account GitHub. Installarla o aggiornarla non aggiorna Copy Genius.
 
-Repository del marketplace: [copynerdai/copy-genius-certificlaude](https://github.com/copynerdai/copy-genius-certificlaude). Crea funnel è un plugin separato: installarlo o aggiornarlo non aggiorna Copy Genius.
+Incolla questa richiesta in Claude Code:
 
-Se hai già installato Copy Genius, il marketplace `copynerd` è già aggiunto. In Claude Code scrivi:
+> Installa o aggiorna la skill personale Crea funnel seguendo https://raw.githubusercontent.com/copynerdai/copy-genius-certificlaude/main/INSTALLA-CREA-FUNNEL.md. Voglio avviarla con /crea-funnel. Conserva eventuali copie precedenti e non modificare i materiali di Copy Genius.
 
-```
-/plugin marketplace update copynerd
-/plugin install crea-funnel@copynerd
-```
+Claude esegue l'installazione e ti chiede i normali permessi. Se trova una copia modificata, si ferma e chiede prima di sostituirla, conservandola in backup. Node.js 22 o successiva deve essere presente già per installare, non soltanto per usare gli strumenti. Se manca, Claude ti guida a prepararlo.
 
-Se non hai il marketplace, aggiungilo prima:
-
-```
-/plugin marketplace add copynerdai/copy-genius-certificlaude
-/plugin install crea-funnel@copynerd
-```
-
-**Verifica.** Chiudi Claude Code e aprilo di nuovo, così parte una sessione nuova (una nuova conversazione). Scrivi `/crea` e controlla che fra i suggerimenti compaia `crea-funnel`.
+**Verifica.** Dopo la conferma dell'installazione, chiudi Claude Code e aprilo di nuovo. Scrivi `/crea` e controlla che fra i suggerimenti compaia `/crea-funnel`, senza prefissi. Se avevi installato il vecchio plugin dal marketplace, segui la migrazione nella [guida di installazione](https://github.com/copynerdai/copy-genius-certificlaude/blob/main/INSTALLA-CREA-FUNNEL.md).
 
 ## Primo avvio
 
 In una sessione nuova di Claude Code scrivi:
 
 ```
-/crea-funnel:crea-funnel
+/crea-funnel
 ```
 
-Puoi aggiungere il brand o il funnel su cui lavorare, per esempio `/crea-funnel:crea-funnel lancio primavera`. Il nome completo distingue il plugin dalle copie locali della skill, che si avviano con `/crea-funnel`.
+Puoi aggiungere il brand o il funnel su cui lavorare, per esempio `/crea-funnel lancio primavera`.
 
 La skill parte solo quando la scrivi tu: non si avvia da sola mentre lavori con Copy Genius.
 
@@ -68,14 +58,9 @@ Il lavoro si può interrompere e riprendere in un'altra sessione: la skill rileg
 
 ## Aggiornamenti
 
-Per aggiornare una copia già installata dal marketplace, in Claude Code esegui:
+Incolla nuovamente in Claude Code la richiesta del paragrafo Installazione, poi riavvialo. Non usare `/plugin update`: questa è una skill personale e gli aggiornamenti non sono automatici.
 
-```
-/plugin marketplace update copynerd
-/plugin update crea-funnel@copynerd
-```
-
-Riavvia Claude Code per usare la nuova versione. L'aggiornamento sostituisce solo la skill e i suoi strumenti: i progetti restano nelle cartelle del brand, le dipendenze e le chiavi restano in `.crea-funnel` nella cartella utente.
+L'aggiornamento sostituisce solo la skill e i suoi strumenti: i progetti restano nelle cartelle del brand, le dipendenze e le chiavi restano in `.crea-funnel` nella cartella utente. La copia precedente viene conservata nei backup di Claude. Eventuali personalizzazioni della skill richiedono la tua conferma e non vengono riportate automaticamente nella nuova versione.
 
 ## Dove finisce il lavoro
 

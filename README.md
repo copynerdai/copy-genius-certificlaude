@@ -62,16 +62,15 @@ Tutto il tuo lavoro — brand, swipe, note, feedback — vive in `~/Desktop/copy
 
 ## Dal copy alle pagine web: Crea funnel
 
-Il marketplace include anche **Crea funnel**, un plugin separato che trasforma il copy già scritto in pagine web, con prova di stile, immagini e controlli. Consegna pagine su Cloudflare oppure codice HTML da incollare in un editor come Elementor. Non modifica i materiali originali di Copy Genius.
+Questo repository distribuisce anche **Crea funnel**, una skill separata che trasforma il copy già scritto in pagine web, con prova di stile, immagini e controlli. Consegna pagine su Cloudflare oppure codice HTML da incollare in un editor come Elementor. Non modifica i materiali originali di Copy Genius.
 
-Per installarlo in Claude Code:
+Per installarla, incolla questa richiesta in Claude Code:
 
 ```
-/plugin marketplace update copynerd
-/plugin install crea-funnel@copynerd
+Installa o aggiorna la skill personale Crea funnel seguendo https://raw.githubusercontent.com/copynerdai/copy-genius-certificlaude/main/INSTALLA-CREA-FUNNEL.md. Voglio avviarla con /crea-funnel. Conserva eventuali copie precedenti e non modificare i materiali di Copy Genius.
 ```
 
-Riavvia Claude Code, poi avvia `/crea-funnel:crea-funnel`. Per requisiti, aggiornamenti e limiti dell'editor, leggi la [guida di Crea funnel](plugins/crea-funnel/README.md).
+Riavvia Claude Code, poi avvia `/crea-funnel`. Si installa direttamente da GitHub come skill personale, non dal marketplace, per mantenere il comando breve. Per aggiornare usa la stessa richiesta. Leggi la [procedura di installazione e migrazione](INSTALLA-CREA-FUNNEL.md) e la [guida di Crea funnel](plugins/crea-funnel/README.md).
 
 ---
 

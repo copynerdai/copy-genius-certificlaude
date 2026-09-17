@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "copynerd",
-  "description": "Marketplace di copynerdai — distribuisce Copy Genius e i suoi aggiornamenti.",
+  "description": "Marketplace di copynerdai: Copy Genius per scrivere il copy e Crea funnel per trasformarlo in pagine web.",
   "owner": {
     "name": "copynerdai"
   },
@@ -15,6 +15,16 @@
       "category": "productivity",
       "source": "./plugins/copy-genius",
       "homepage": "https://github.com/copynerdai/copy-genius-certificlaude"
+    },
+    {
+      "name": "crea-funnel",
+      "description": "Dal copy già scritto alle pagine web: stile, immagini, controlli e consegna su Cloudflare o come codice per un editor.",
+      "author": {
+        "name": "copynerdai"
+      },
+      "category": "productivity",
+      "source": "./plugins/crea-funnel",
+      "homepage": "https://github.com/copynerdai/copy-genius-certificlaude/tree/main/plugins/crea-funnel"
     }
   ]
 }

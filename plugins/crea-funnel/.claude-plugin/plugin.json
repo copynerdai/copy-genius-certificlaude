@@ -1,0 +1,10 @@
+{
+  "name": "crea-funnel",
+  "description": "Trasforma un copy già scritto in pagine web impaginate, con immagini, collegamenti e controlli, fino alla pubblicazione su Cloudflare o al codice per un editor.",
+  "version": "1.0.0",
+  "author": {
+    "name": "copynerdai"
+  },
+  "homepage": "https://github.com/copynerdai/copy-genius-certificlaude/tree/main/plugins/crea-funnel",
+  "repository": "https://github.com/copynerdai/copy-genius-certificlaude"
+}

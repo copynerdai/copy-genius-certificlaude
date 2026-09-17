@@ -1,0 +1,37 @@
+// Modello di configurazione per pubblicare pagine statiche su Cloudflare Workers con un dominio personalizzato.
+// Copialo come wrangler.jsonc nella cartella delle pagine-<funnel>/ e cambia i valori scritti in MAIUSCOLO.
+// Documentazione: https://developers.cloudflare.com/workers/wrangler/configuration/
+// Qui non vanno mai token, chiavi o l'Account ID: pubblica-cloudflare.mjs li prende da segreti.env
+// e li passa solo al comando di pubblicazione.
+{
+  // Nome del Worker nell'account Cloudflare: minuscole, numeri e trattini, per esempio "nomebrand-lancio".
+  "name": "NOME-DEL-PROGETTO",
+
+  // Data delle regole del runtime: la data della prima pubblicazione. Non serve cambiarla dopo.
+  "compatibility_date": "2026-09-17",
+
+  // Solo file statici, senza codice: nessuna chiave "main".
+  "assets": {
+    // Cartella con le pagine pronte, relativa a questo file.
+    "directory": "./pubblico",
+    // /pagina serve pagina.html e /pagina.html porta a /pagina (comportamento predefinito).
+    "html_handling": "auto-trailing-slash",
+    // Un indirizzo inesistente risponde 404. Con "404-page" viene mostrata pubblico/404.html.
+    "not_found_handling": "none"
+  },
+
+  // Il sito risponde solo al dominio indicato in "routes": niente indirizzo *.workers.dev
+  // e niente indirizzi di anteprima delle versioni.
+  "workers_dev": false,
+  "preview_urls": false,
+
+  // Dominio personalizzato. Il dominio principale (per esempio esempio.it) deve essere già una zona
+  // dello stesso account Cloudflare, e l'indirizzo scelto non deve avere già un record DNS.
+  // Cloudflare crea da solo il record DNS e il certificato.
+  // Per un indirizzo di prova che nessuno cerca usa un sottodominio poco prevedibile,
+  // per esempio "prova-7k2m.esempio.it". Scrivi X-Robots-Tag: noindex in sorgente/_headers,
+  // poi riassembla per copiarlo in pubblico/_headers. Non modificare pubblico/ a mano.
+  "routes": [
+    { "pattern": "PAGINE.DOMINIO-DEL-CLIENTE.IT", "custom_domain": true }
+  ]
+}
